@@ -46,7 +46,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonToggleModule,
     MatStepperModule,
     MatTableModule,
-    MatIconModule,
+    MatIconModule
   ],
   providers: [AngularFireDatabase, AngularFirestore],
   bootstrap: [AppComponent]
