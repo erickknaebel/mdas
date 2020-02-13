@@ -1,11 +1,17 @@
-// Angular Material Compnents
+/** Angular Material */
 import {
   MatButtonModule, MatNativeDateModule, MatDatepickerModule, MatToolbarModule,
   MatListModule, MatCheckboxModule, MatInputModule, MatSelectModule, MatSliderModule,
   MatButtonToggleModule, MatStepperModule, MatTableModule, MatIconModule
 } from '@angular/material';
 
-// Angular Firebase
+/** NGRX Imports */
+import { EffectsModule } from '@ngrx/effects';
+import { loginReducer } from './ngrx/reducers/login.reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+
+/** Firebase for Angular */
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
@@ -20,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +53,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonToggleModule,
     MatStepperModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    StoreModule.forRoot({
+      user: loginReducer
+    }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [AngularFireDatabase, AngularFirestore],
   bootstrap: [AppComponent]
