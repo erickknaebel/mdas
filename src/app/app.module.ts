@@ -1,3 +1,4 @@
+import { AuthorizationService } from './shared/services/authorization.service';
 /** Angular Material */
 import {
   MatButtonModule, MatNativeDateModule, MatDatepickerModule, MatToolbarModule,
@@ -41,6 +42,7 @@ import { LoginModule } from './modules/login/login.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    EffectsModule,
     FormsModule,
     HttpClientModule,
     LoginModule,
@@ -62,7 +64,7 @@ import { LoginModule } from './modules/login/login.module';
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
-  providers: [AngularFireDatabase, AngularFirestore],
+  providers: [AngularFireDatabase, AngularFirestore, AuthorizationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,7 +9,7 @@ const initialState: Login = {
 }
 
 export function loginReducer(state: Login, action: LoginActions.Actions) {
-    switch(action.type) {
+    switch (action.type) {
         case LoginActions.APP_LOGIN:
             state = action.payload;
             return state;
@@ -18,3 +18,4 @@ export function loginReducer(state: Login, action: LoginActions.Actions) {
 
     }
 }
+
