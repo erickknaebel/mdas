@@ -26,6 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginModule } from './modules/login/login.module';
+
 
 
 @NgModule({
@@ -41,6 +43,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    LoginModule,
     MatSelectModule,
     MatInputModule,
     MatCheckboxModule,
