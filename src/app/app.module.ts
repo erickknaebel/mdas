@@ -28,8 +28,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginModule } from './../modules/login/login.module';
 
-
-
 @NgModule({
   declarations: [
     AppComponent
@@ -58,9 +56,7 @@ import { LoginModule } from './../modules/login/login.module';
     MatStepperModule,
     MatTableModule,
     MatIconModule,
-    StoreModule.forRoot({
-      // user: loginReducer
-    }),
+    StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [AngularFireDatabase, AngularFirestore, AuthorizationService],

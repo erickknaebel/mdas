@@ -5,6 +5,9 @@ import { AngularMaterial } from '../../material';
 import * as FromLogin from './components';
 import * as FromLoginContainers from './containers';
 
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store';
+
 
 
 @NgModule({
@@ -15,7 +18,9 @@ import * as FromLoginContainers from './containers';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    AngularMaterial
+    AngularMaterial,
+    // StoreModule.forModule('login', reducers)
+    StoreModule.forFeature('user', reducers)
   ]
 })
 export class LoginModule { }
