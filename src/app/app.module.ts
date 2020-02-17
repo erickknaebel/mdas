@@ -1,4 +1,4 @@
-import { AuthorizationService } from './shared/services/authorization.service';
+import { AuthorizationService } from './services/authorization.service';
 /** Angular Material */
 import {
   MatButtonModule, MatNativeDateModule, MatDatepickerModule, MatToolbarModule,
@@ -8,7 +8,6 @@ import {
 
 /** NGRX Imports */
 import { EffectsModule } from '@ngrx/effects';
-import { loginReducer } from './ngrx/reducers/login.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 
@@ -27,7 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginModule } from './modules/login/login.module';
+import { LoginModule } from './../modules/login/login.module';
 
 
 
@@ -60,7 +59,7 @@ import { LoginModule } from './modules/login/login.module';
     MatTableModule,
     MatIconModule,
     StoreModule.forRoot({
-      user: loginReducer
+      // user: loginReducer
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
