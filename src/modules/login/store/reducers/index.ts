@@ -1,10 +1,22 @@
-import { ActionReducerMap } from '@ngrx/store';
-import * as fromLogin from './login.reducer';
+import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
+import * as FromLogin from './login.reducer';
 
-export interface Authenticated {
-    login: fromLogin.UserState;
+export interface AuthenticationState {
+    login: FromLogin.UserState;
 }
 
-export const reducers: ActionReducerMap<Authenticated> = {
-    login: fromLogin.reducer
+export const reducers: ActionReducerMap<AuthenticationState> = {
+    login: FromLogin.reducer
 }
+
+export const getAuthenticationState =
+    createFeatureSelector<AuthenticationState>('authentication');
+
+export const getLoginState = createSelector(
+    getAuthenticationState,
+    (state: AuthenticationState) => state.login
+);
+
+export const getUserInfo = createSelector(getLoginState, FromLogin.getUser);
+export const getUserLoaded = createSelector(getLoginState, FromLogin.getUserLoaded);
+export const getUserLoading = createSelector(getLoginState, FromLogin.getUserLoading);

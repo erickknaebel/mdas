@@ -1,9 +1,8 @@
-import * as fromLogin from '../actions/login.action';
+import * as FromLogin from '../actions/login.action';
 import { UserData } from '../../models/user';
 
 export interface UserState {
     data: UserData;
-    activeUser: boolean;
     loaded: boolean;
     loading: boolean;
 }
@@ -14,32 +13,31 @@ export const initialState: UserState = {
         email: 'erick.knaebel@roush.com',
         photoUrl: ''
     },
-    activeUser: false,
     loaded: false,
     loading: false
 };
 
 export function reducer(
     state = initialState,
-    action: fromLogin.LoginAction
+    action: FromLogin.LoginAction
 ): UserState {
 
     switch (action.type) {
-        case fromLogin.APP_LOGIN: {
+        case FromLogin.APP_LOGIN: {
             return {
                 ...state,
                 loading: true,
                 loaded: false
             };
         }
-        case fromLogin.APP_LOGIN_SUCCESS: {
+        case FromLogin.APP_LOGIN_SUCCESS: {
             return {
                 ...state,
                 loading: false,
                 loaded: true
             };
         }
-        case fromLogin.APP_LOGIN_FAIL: {
+        case FromLogin.APP_LOGIN_FAIL: {
             return {
                 ...state,
                 loading: false,
@@ -50,3 +48,7 @@ export function reducer(
 
     return state;
 }
+
+export const getUserLoading = (state: UserState) => state.loading;
+export const getUserLoaded = (state: UserState) => state.loaded;
+export const getUser = (state: UserState) => state.data;

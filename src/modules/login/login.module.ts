@@ -17,10 +17,10 @@ import { reducers } from './store';
     CommonModule,
     LoginRoutingModule,
     AngularMaterial,
-    StoreModule.forFeature('user', reducers)
+    StoreModule.forFeature('authentication', reducers)
   ],
   entryComponents: [FromLogin.LoginComponents, FromLoginContainers.LoginContainers]
 })
-export class LoginModule{ 
+export class LoginModule {
 
 }

@@ -9,11 +9,7 @@ export class LoginComponent implements OnInit {
 
   @Output() loggingIn = new EventEmitter<string>();
 
-  @Input() name: string;
-  
-
-  // private loggingIn: BehaviorSubject<string> = new BehaviorSubject('false');
-  // private login = this.loggingIn.asObservable();
+  @Input() user;
 
   constructor() { }
 
@@ -21,9 +17,7 @@ export class LoginComponent implements OnInit {
   }
 
   signIn() {
-    console.log('signIn from components/login.component')
     this.loggingIn.next('logginIn');
-    console.log(this.loggingIn)
   }
 
 }
