@@ -1,6 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { LoginContainerComponent } from '../../containers/login/login.component';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-login-screen',
@@ -10,6 +8,9 @@ import { LoginContainerComponent } from '../../containers/login/login.component'
 export class LoginComponent implements OnInit {
 
   @Output() loggingIn = new EventEmitter<string>();
+
+  @Input() name: string;
+  
 
   // private loggingIn: BehaviorSubject<string> = new BehaviorSubject('false');
   // private login = this.loggingIn.asObservable();

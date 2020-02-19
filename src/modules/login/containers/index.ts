@@ -1,8 +1,6 @@
-import { LoginContainerComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
+import { LoginContainerComponent } from './login/login.container.component';
 
-export const LoginContainers: any[] = [LoginContainerComponent, SignupComponent]
+export const LoginContainers: any[] = [LoginContainerComponent]
 
-export * from './login/login.component';
-export * from './signup/signup.component';
+export * from './login/login.container.component';
 
