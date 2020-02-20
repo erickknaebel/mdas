@@ -17,6 +17,6 @@ export const getLoginState = createSelector(
     (state: AuthenticationState) => state.login
 );
 
-export const getUserInfo = createSelector(getLoginState, FromLogin.getUser);
+export const getUserInfo = createSelector(getLoginState, FromLogin.getUserInfo);
 export const getUserLoaded = createSelector(getLoginState, FromLogin.getUserLoaded);
 export const getUserLoading = createSelector(getLoginState, FromLogin.getUserLoading);

@@ -9,9 +9,9 @@ export interface UserState {
 
 export const initialState: UserState = {
     data: {
-        name: 'Erick Knaebel',
-        email: 'erick.knaebel@roush.com',
-        photoUrl: ''
+        name: null,
+        email: null,
+        photoUrl: null
     },
     loaded: false,
     loading: false
@@ -32,7 +32,7 @@ export function reducer(
         }
         case FromLogin.APP_LOGIN_SUCCESS: {
             return {
-                ...state,
+                data: action.payload,
                 loading: false,
                 loaded: true
             };
@@ -51,4 +51,4 @@ export function reducer(
 
 export const getUserLoading = (state: UserState) => state.loading;
 export const getUserLoaded = (state: UserState) => state.loaded;
-export const getUser = (state: UserState) => state.data;
+export const getUserInfo = (state: UserState) => state.data;

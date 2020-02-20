@@ -1,31 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { UserData } from 'src/modules/login/models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService {
 
+  data: BehaviorSubject<UserData> = new BehaviorSubject(null);
+  user$ = this.data.asObservable();
+
   constructor(private firebaseAuth: AngularFireAuth, private router: Router) { }
 
   login(email, password, action): Observable<any> {
-    console.log('attemping to login...')
-    const authorized = this.firebaseAuth
+    this.firebaseAuth
       .auth
       .signInWithEmailAndPassword(email, password)
       .then(res => {
         console.log('Successfully signed in!');
-        sessionStorage.setItem('authenticated', 'true');
-        this.router.navigate(['dashboard']);
+        const user = {
+          name: res['user']['displayName'],
+          email: res['user']['email'],
+          photoUrl: res['user']['photoURL']
+        };
+        this.data.next(user);
       })
       .catch(err => {
         console.log('Something is wrong:', err.message);
       });
-    return new Observable(observer => {
-      observer.next(authorized);
-    })
+    return this.user$;
   }
 
   signUp() {

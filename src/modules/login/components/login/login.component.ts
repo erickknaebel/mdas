@@ -5,16 +5,11 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   @Output() loggingIn = new EventEmitter<string>();
 
   @Input() user;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   signIn() {
     this.loggingIn.next('logginIn');

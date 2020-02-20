@@ -27,6 +27,7 @@ import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginModule } from './../modules/login/login.module';
+import { effects } from 'src/modules/login/store';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { LoginModule } from './../modules/login/login.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    EffectsModule,
+    EffectsModule.forRoot(effects),
     FormsModule,
     HttpClientModule,
     LoginModule,

@@ -1,4 +1,4 @@
-import { NgModule, DoBootstrap } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginRoutingModule } from './login.routing';
 import { AngularMaterial } from '../../material';
@@ -6,7 +6,11 @@ import * as FromLogin from './components';
 import * as FromLoginContainers from './containers';
 
 import { StoreModule } from '@ngrx/store';
-import { reducers } from './store';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers, effects } from './store';
+
+
+import { AuthorizationService } from './../../app/services/authorization.service';
 
 @NgModule({
   declarations: [
@@ -17,8 +21,10 @@ import { reducers } from './store';
     CommonModule,
     LoginRoutingModule,
     AngularMaterial,
-    StoreModule.forFeature('authentication', reducers)
+    StoreModule.forFeature('authentication', reducers),
+    EffectsModule.forFeature(effects)
   ],
+  providers: [AuthorizationService],
   entryComponents: [FromLogin.LoginComponents, FromLoginContainers.LoginContainers]
 })
 export class LoginModule {
