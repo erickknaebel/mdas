@@ -1,3 +1,4 @@
+import { AuthorizationService } from './services/authorization.service';
 /** Angular Material */
 import {
   MatButtonModule, MatNativeDateModule, MatDatepickerModule, MatToolbarModule,
@@ -7,7 +8,6 @@ import {
 
 /** NGRX Imports */
 import { EffectsModule } from '@ngrx/effects';
-import { loginReducer } from './ngrx/reducers/login.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 
@@ -26,7 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { LoginModule } from './../modules/login/login.module';
+import { effects } from 'src/modules/login/store';
 
 @NgModule({
   declarations: [
@@ -39,8 +40,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    EffectsModule.forRoot(effects),
     FormsModule,
     HttpClientModule,
+    LoginModule,
     MatSelectModule,
     MatInputModule,
     MatCheckboxModule,
@@ -54,12 +57,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatStepperModule,
     MatTableModule,
     MatIconModule,
-    StoreModule.forRoot({
-      user: loginReducer
-    }),
+    StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
-  providers: [AngularFireDatabase, AngularFirestore],
+  providers: [AngularFireDatabase, AngularFirestore, AuthorizationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
