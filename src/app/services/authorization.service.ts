@@ -26,6 +26,7 @@ export class AuthorizationService {
           photoUrl: res['user']['photoURL']
         };
         this.data.next(user);
+        this.router.navigate(['dashboard']);
       })
       .catch(err => {
         console.log('Something is wrong:', err.message);

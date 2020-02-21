@@ -40,4 +40,5 @@ export class NavigationContainerComponent implements AfterViewInit {
   removeNavigation() {
     this.navigation.clear();
   }
+  
 }
