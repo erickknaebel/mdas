@@ -1,0 +1,12 @@
+<mat-toolbar class="toolbar" color="primary">
+    <span>ROUSH &middot; POM Technology Assessment</span>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <span><button mat-button (click)="navigateTo('programs')">Programs</button></span>
+    <span><button mat-button>Technologies</button></span>
+    <span><button mat-button (click)="navigateTo('assessment')">Assessments</button></span>
+    <span class="fill-remaining-space"></span>
+    <span (click)="navigateTo('profile')">
+        <h6 style="font-size:12px;">Welcome</h6>
+    </span>
+    <span><button mat-button (click)="signOut()">Log Out</button></span>
+</mat-toolbar>

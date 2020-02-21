@@ -1,4 +1,3 @@
-import { AuthorizationService } from './services/authorization.service';
 /** Angular Material */
 import {
   MatButtonModule, MatNativeDateModule, MatDatepickerModule, MatToolbarModule,
@@ -11,6 +10,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 
+import { reducers, CustomSerializer } from './store';
+import { effects } from 'src/modules/login/store';
+
 /** Firebase for Angular */
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -20,18 +22,25 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { AuthorizationService } from './services/authorization.service';
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, ROUTES } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginModule } from './../modules/login/login.module';
-import { effects } from 'src/modules/login/store';
+
+import { NavigationComponent } from './shared/components/navigation/navigation.component';
+import { NavigationContainerComponent } from './shared/containers/navigation/navigation.container';
+import { RouterModule } from '@angular/router';
+import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavigationComponent,
+    NavigationContainerComponent
   ],
   imports: [
     AngularFireAuthModule,
@@ -57,10 +66,18 @@ import { effects } from 'src/modules/login/store';
     MatStepperModule,
     MatTableModule,
     MatIconModule,
-    StoreModule.forRoot({}),
+    StoreRouterConnectingModule.forRoot(),
+    RouterModule.forRoot(ROUTES),
+    StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
-  providers: [AngularFireDatabase, AngularFirestore, AuthorizationService],
+  providers: [
+    AngularFireDatabase,
+    AngularFirestore,
+    AuthorizationService,
+    { provide: RouterStateSerializer, useClass: CustomSerializer }
+  ],
+  entryComponents: [NavigationComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

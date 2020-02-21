@@ -6,8 +6,6 @@ import { of } from 'rxjs/internal/observable/of';
 
 import * as LoginActions from '../actions/login.action';
 import { AuthorizationService } from './../../../../app/services/authorization.service';
-import { UserData } from '../../models/user';
-
 
 @Injectable()
 export class LoginEffects {

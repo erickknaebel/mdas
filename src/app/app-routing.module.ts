@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginContainerComponent } from 'src/modules/login/containers';
 
 const routes: Routes = [
   // { path: 'login', component: LoginContainerComponent},
@@ -15,3 +14,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+export const ROUTES = routes;
