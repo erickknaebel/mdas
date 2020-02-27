@@ -11,6 +11,7 @@ import { reducers, effects } from './store';
 
 
 import { AuthorizationService } from './../../app/services/authorization.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,8 @@ import { AuthorizationService } from './../../app/services/authorization.service
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     LoginRoutingModule,
     AngularMaterial,
     StoreModule.forFeature('authentication', reducers),

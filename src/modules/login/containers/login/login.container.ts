@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as FromStore from '../../store';
+import { Credentials } from '../../models/user';
 
 
 @Component({
@@ -12,7 +13,8 @@ export class LoginContainerComponent {
 
   constructor(private store: Store<FromStore.AuthenticationState>) { }
 
-  loggingIn() {
-    this.store.dispatch(new FromStore.Login());
+  loggingIn(event: Credentials) {
+    this.store.dispatch(new FromStore.Login(event));
+    console.log(event)
   }
 }

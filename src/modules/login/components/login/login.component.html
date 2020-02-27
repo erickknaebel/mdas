@@ -4,14 +4,14 @@
             <div class="card-body">
                 <img src="../assets/images/roush-logo.jpg" alt="Roush Industries" class="mx-auto d-block logo" />
                 <h5 class="card-title text-center">Technology Assessment</h5>
-                <div class="form-signin">
+                <div class="form-signin" [formGroup]="loginForm">
                     <mat-form-field class="full-width">
-                        <input matInput type="text" name="email" placeholder="Email Address" value="">
+                        <input matInput type="text" formControlName="email" name="email" placeholder="Email Address" value="">
                     </mat-form-field>
                     <mat-form-field class="full-width">
-                        <input matInput type="password" name="password" placeholder="Password" value="">
+                        <input matInput type="password" formControlName="password" name="password" placeholder="Password" value="">
                     </mat-form-field>
-                    <button mat-flat-button color="primary" (click)="signIn()">Sign In</button>
+                    <button *ngIf="loginForm.status === 'VALID'" mat-flat-button color="primary" (click)="signIn()">Sign In</button>
                 </div>
             </div>
         </div>

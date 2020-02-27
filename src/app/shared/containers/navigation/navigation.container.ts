@@ -9,9 +9,9 @@ import { NavigationComponent } from '../../components/navigation/navigation.comp
   templateUrl: './navigation.container.html',
   styleUrls: ['./navigation.container.scss']
 })
-export class NavigationContainerComponent implements AfterViewInit {
+export class NavigationContainerComponent {
 
-  authenticated$: Observable<boolean>;
+  authenticated$: Observable<any>;
 
   @ViewChild('navigation', { read: ViewContainerRef, static: false }) navigation: ViewContainerRef;
 
@@ -21,14 +21,11 @@ export class NavigationContainerComponent implements AfterViewInit {
   ) {
     this.authenticated$ = this.store.select(FromStore.getUserLoaded);
     this.authenticated$.subscribe(value => {
+      console.log(value)
       if (value) {
         this.renderNavigation();
       }
     })
-  }
-
-  ngAfterViewInit() {
-
   }
 
   renderNavigation() {

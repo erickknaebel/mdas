@@ -14,7 +14,7 @@ export class AuthorizationService {
 
   constructor(private firebaseAuth: AngularFireAuth, private router: Router) { }
 
-  login(email, password, action): Observable<any> {
+  login(email, password): Observable<any> {
     this.firebaseAuth
       .auth
       .signInWithEmailAndPassword(email, password)
@@ -29,9 +29,10 @@ export class AuthorizationService {
         this.router.navigate(['dashboard']);
       })
       .catch(err => {
+        this.data.next(null);
         console.log('Something is wrong:', err.message);
       });
-    return this.user$;
+      return this.user$;
   }
 
   signUp() {

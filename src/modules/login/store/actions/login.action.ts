@@ -1,6 +1,5 @@
 import { Action } from '@ngrx/store';
-import { UserData } from '../../models/user';
-import { UserState } from '../reducers/login.reducer';
+import { UserData, Credentials } from '../../models/user';
 
 export const APP_LOGIN = '[App] Login In';
 export const APP_LOGIN_SUCCESS = '[App] Login In Success';
@@ -8,6 +7,7 @@ export const APP_LOGIN_FAIL = '[App] Login In Fail';
 
 export class Login implements Action {
     readonly type = APP_LOGIN;
+    constructor(public payload: Credentials) {}
 }
 
 export class LoginSuccess implements Action {
