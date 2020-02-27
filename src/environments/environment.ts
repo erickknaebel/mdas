@@ -8,5 +8,9 @@ export const environment = {
     storageBucket: 'mpom-testing.appspot.com',
     messagingSenderId: '1013857952166',
     appId: '1:1013857952166:web:c0555cfdc3ea8bfe9baf67'
+  },
+  credentials: {
+    email: '',
+    password: ''
   }
 };

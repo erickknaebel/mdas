@@ -13,8 +13,7 @@ export class LoginContainerComponent {
 
   constructor(private store: Store<FromStore.AuthenticationState>) { }
 
-  loggingIn(event: Credentials) {
-    this.store.dispatch(new FromStore.Login(event));
-    console.log(event)
+  loggingIn() {
+    this.store.dispatch(new FromStore.Login());
   }
 }

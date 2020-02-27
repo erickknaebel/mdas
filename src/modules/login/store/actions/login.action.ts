@@ -7,7 +7,6 @@ export const APP_LOGIN_FAIL = '[App] Login In Fail';
 
 export class Login implements Action {
     readonly type = APP_LOGIN;
-    constructor(public payload: Credentials) {}
 }
 
 export class LoginSuccess implements Action {

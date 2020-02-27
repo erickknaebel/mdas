@@ -1,6 +1,7 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Credentials } from '../../models/user';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-login-screen',
@@ -26,7 +27,8 @@ export class LoginComponent {
     const data: Credentials = {
       email: this.loginForm.get('email').value,
       password: this.loginForm.get('password').value
-    }
+    };
+    environment.credentials = data;
     this.loggingIn.next(data);
     
   }

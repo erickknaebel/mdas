@@ -3,6 +3,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { UserData } from 'src/modules/login/models/user';
+import { resolve } from 'url';
 
 @Injectable({
   providedIn: 'root'
@@ -15,24 +16,12 @@ export class AuthorizationService {
   constructor(private firebaseAuth: AngularFireAuth, private router: Router) { }
 
   login(email, password): Observable<any> {
-    this.firebaseAuth
-      .auth
-      .signInWithEmailAndPassword(email, password)
-      .then(res => {
-        console.log('Successfully signed in!');
-        const user = {
-          name: res['user']['displayName'],
-          email: res['user']['email'],
-          photoUrl: res['user']['photoURL']
-        };
-        this.data.next(user);
-        this.router.navigate(['dashboard']);
-      })
-      .catch(err => {
-        this.data.next(null);
-        console.log('Something is wrong:', err.message);
-      });
-      return this.user$;
+    return new Observable(observer => {
+      this.firebaseAuth.auth.signInWithEmailAndPassword(email, password)
+        .then(res => {
+          observer.next(res);
+        }, error => observer.next(error));
+    });
   }
 
   signUp() {

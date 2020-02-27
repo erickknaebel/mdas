@@ -39,7 +39,7 @@ export function reducer(
         }
         case FromLogin.APP_LOGIN_FAIL: {
             return {
-                ...state,
+                data: action.payload,
                 loading: false,
                 loaded: false
             };
