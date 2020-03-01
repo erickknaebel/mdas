@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as FromStore from '../../store';
-import { Credentials } from '../../models/user';
-
 
 @Component({
   selector: 'app-login',

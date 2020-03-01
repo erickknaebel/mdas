@@ -2,53 +2,59 @@ import * as FromLogin from '../actions/login.action';
 import { UserData } from '../../models/user';
 
 export interface UserState {
-    data: UserData;
+    user: UserData;
     loaded: boolean;
     loading: boolean;
 }
 
 export const initialState: UserState = {
-    data: {
+    user: {
         name: null,
         email: null,
-        photoUrl: null
+        photoUrl: null,
+        uid: null,
+        displayName: null,
+        photoURL: null,
+        phoneNumber: null,
+        providerId: null,
+        error: null
     },
     loaded: false,
     loading: false
 };
 
 export function reducer(
-    state = initialState,
+    user = initialState,
     action: FromLogin.LoginAction
 ): UserState {
 
     switch (action.type) {
         case FromLogin.APP_LOGIN: {
             return {
-                ...state,
+                ...user,
                 loading: true,
                 loaded: false
             };
         }
         case FromLogin.APP_LOGIN_SUCCESS: {
             return {
-                data: action.payload,
+                user: action.payload,
                 loading: false,
                 loaded: true
             };
         }
         case FromLogin.APP_LOGIN_FAIL: {
             return {
-                data: action.payload,
+                user: action.payload,
                 loading: false,
                 loaded: false
             };
         }
     }
 
-    return state;
+    return user;
 }
 
-export const getUserLoading = (state: UserState) => state.loading;
-export const getUserLoaded = (state: UserState) => state.loaded;
-export const getUserInfo = (state: UserState) => state.data;
+export const getUserLoading = (user: UserState) => user.loading;
+export const getUserLoaded = (user: UserState) => user.loaded;
+export const getUserInfo = (user: UserState) => user.user;

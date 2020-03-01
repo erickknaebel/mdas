@@ -1,21 +1,14 @@
-import { LoginSuccess } from './../actions/login.action';
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 
 import { Effect, Actions, ofType } from '@ngrx/effects';
-import { switchMap, map, exhaustMap} from 'rxjs/operators';
-import { of } from 'rxjs/internal/observable/of';
+import { switchMap, map} from 'rxjs/operators';
 
 import * as LoginActions from '../actions/login.action';
 import { AuthorizationService } from './../../../../app/services/authorization.service';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class LoginEffects {
-
-    userData: any;
 
     constructor(
         private actions$: Actions,
@@ -28,10 +21,9 @@ export class LoginEffects {
         switchMap(() => {
             return this.as.login(environment.credentials.email, environment.credentials.password).pipe(
                 map(response => {
-                    this.userData = response.json();
-                    console.log(this.userData)
+                    console.log(response);
                     if (response.user != null) {
-                        return new LoginActions.LoginSuccess(response);
+                        return new LoginActions.LoginSuccess(response['user']['providerData'][0]);
                     } else {
                         return new LoginActions.LoginFail({ error: response.message });
                     }
