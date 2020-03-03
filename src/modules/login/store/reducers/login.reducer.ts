@@ -1,5 +1,5 @@
 import * as FromLogin from '../actions/login.action';
-import { UserData } from '../../models/user';
+import { UserData } from '../../models/dashboard';
 
 export interface UserState {
     user: UserData;

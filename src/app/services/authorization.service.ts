@@ -2,16 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { UserData } from 'src/modules/login/models/user';
+import { UserData } from 'src/modules/login/models/dashboard';
 import { resolve } from 'url';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService {
-
-  data: BehaviorSubject<UserData> = new BehaviorSubject(null);
-  user$ = this.data.asObservable();
 
   constructor(private firebaseAuth: AngularFireAuth, private router: Router) { }
 
@@ -20,6 +17,7 @@ export class AuthorizationService {
       this.firebaseAuth.auth.signInWithEmailAndPassword(email, password)
         .then(res => {
           observer.next(res);
+          this.router.navigate(['dashboard']);
         }, error => observer.next(error));
     });
   }

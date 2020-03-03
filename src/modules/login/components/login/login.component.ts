@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Credentials } from '../../models/user';
+import { Credentials } from '../../models/dashboard';
 import { environment } from '../../../../environments/environment';
 
 @Component({
@@ -10,7 +10,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class LoginComponent {
 
-  @Output() loggingIn = new EventEmitter<Credentials>();
+  @Output() login = new EventEmitter<Credentials>();
 
   @Input() user;
 
@@ -29,7 +29,7 @@ export class LoginComponent {
       password: this.loginForm.get('password').value
     };
     environment.credentials = data;
-    this.loggingIn.next(data);
+    this.login.next(data);
     
   }
 

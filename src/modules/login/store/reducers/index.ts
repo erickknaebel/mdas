@@ -6,7 +6,6 @@ export interface AuthenticationState {
 }
 
 export const reducers: ActionReducerMap<AuthenticationState> = {
-    // login: FromLogin.reducer
     state: FromLogin.reducer
 }
 

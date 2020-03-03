@@ -19,10 +19,13 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
 
+/** Services */
+import { AuthorizationService } from './services/authorization.service';
+import { DataService } from './services/data.service';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AuthorizationService } from './services/authorization.service';
 import { AppComponent } from './app.component';
 import { AppRoutingModule, ROUTES } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,11 +33,11 @@ import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginModule } from './../modules/login/login.module';
-
 import { NavigationComponent } from './shared/components/navigation/navigation.component';
 import { NavigationContainerComponent } from './shared/containers/navigation/navigation.container';
 import { RouterModule } from '@angular/router';
 import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
+
 
 @NgModule({
   declarations: [
@@ -74,6 +77,7 @@ import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router
   providers: [
     AngularFireDatabase,
     AngularFirestore,
+    DataService,
     AuthorizationService,
     { provide: RouterStateSerializer, useClass: CustomSerializer }
   ],

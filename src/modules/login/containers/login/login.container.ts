@@ -11,7 +11,7 @@ export class LoginContainerComponent {
 
   constructor(private store: Store<FromStore.AuthenticationState>) { }
 
-  loggingIn() {
+  login() {
     this.store.dispatch(new FromStore.Login());
   }
 }

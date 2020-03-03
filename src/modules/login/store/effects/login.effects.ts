@@ -21,7 +21,6 @@ export class LoginEffects {
         switchMap(() => {
             return this.as.login(environment.credentials.email, environment.credentials.password).pipe(
                 map(response => {
-                    console.log(response);
                     if (response.user != null) {
                         return new LoginActions.LoginSuccess(response['user']['providerData'][0]);
                     } else {

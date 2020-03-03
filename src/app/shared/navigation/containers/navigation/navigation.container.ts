@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ComponentFactoryResolver, ViewChild, ViewContainerRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import * as FromStore from '../../../../modules/login/store';
+import * as FromStore from '../../../../../modules/login/store';
 import { NavigationComponent } from '../../components/navigation/navigation.component';
 
 @Component({
@@ -21,6 +21,7 @@ export class NavigationContainerComponent {
   ) {
     this.authenticated$ = this.store.select(FromStore.getUserLoaded);
     this.authenticated$.subscribe(value => {
+      console.log(value)
       if (value) {
         this.renderNavigation();
       }
