@@ -11,7 +11,7 @@ export class Dashboard implements Action {
 
 export class DashboardSuccess implements Action {
     readonly type = APP_DASHBOARD_SUCCESS;
-    constructor(public payload: DashboardItem[]) { }
+    constructor(public payload: any) { }
 }
 
 export class DashboardFail implements Action {

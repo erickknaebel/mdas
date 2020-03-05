@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ComponentFactoryResolver, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component,ComponentFactoryResolver, ViewChild, ViewContainerRef, Input} from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as FromStore from '../../../../modules/login/store';
@@ -11,10 +11,10 @@ import { NavigationComponent } from '../../components/navigation/navigation.comp
 })
 export class NavigationContainerComponent {
 
-  authenticated$: Observable<any>;
+  @Input() authenticated$: Observable<any>;
 
   @ViewChild('navigation', { read: ViewContainerRef, static: false }) navigation: ViewContainerRef;
-
+  
   constructor(
     private store: Store<FromStore.AuthenticationState>,
     private cfr: ComponentFactoryResolver
@@ -24,13 +24,15 @@ export class NavigationContainerComponent {
       if (value) {
         this.renderNavigation();
       }
-    })
+    });
   }
 
   renderNavigation() {
     const cf = this.cfr.resolveComponentFactory(NavigationComponent);
     this.navigation.clear();
-    const nav = this.navigation.createComponent(cf).instance;
+    const nav = this.navigation.createComponent(cf);
+    const data = FromStore.getUserInfo;
+    nav.instance.userName = "Erick";
   }
 
   removeNavigation() {

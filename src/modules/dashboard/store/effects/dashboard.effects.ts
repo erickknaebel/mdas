@@ -21,7 +21,6 @@ export class DashboardEffects {
         switchMap(() => {
             return this.ds.getRecords('/documents').pipe(
                 map(response => {
-                    console.log(response);
                     return new DashboardAction.DashboardSuccess(response);
                 })
             )

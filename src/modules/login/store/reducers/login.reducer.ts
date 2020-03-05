@@ -58,3 +58,4 @@ export function reducer(
 export const getUserLoading = (user: UserState) => user.loading;
 export const getUserLoaded = (user: UserState) => user.loaded;
 export const getUserInfo = (user: UserState) => user.user;
+

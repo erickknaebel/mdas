@@ -1,5 +1,1 @@
-<p>dashboard container works!</p>
-<div *ngFor="let item of items$ | async">
-    {{item.id}}
-</div>
-<app-dashboard></app-dashboard>
+<app-dashboard [items]="items$"></app-dashboard>
