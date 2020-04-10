@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as FromStore from '../../../../modules/login/store';
 import { NavigationComponent } from '../../components/navigation/navigation.component';
+import * as AuthenticationStatus from '../../classes/authentication.state';
+import * as Classes from '../../classes/authentication.state';
 
 @Component({
   selector: 'app-navigation-container',
@@ -16,10 +18,10 @@ export class NavigationContainerComponent {
   @ViewChild('navigation', { read: ViewContainerRef, static: false }) navigation: ViewContainerRef;
   
   constructor(
-    private store: Store<FromStore.AuthenticationState>,
+    private store: Store<AuthenticationStatus.AuthenticationState>,
     private cfr: ComponentFactoryResolver
   ) {
-    this.authenticated$ = this.store.select(FromStore.getUserLoaded);
+    this.authenticated$ = this.store.select(Classes.getUserLoaded);
     this.authenticated$.subscribe(value => {
       if (value) {
         this.renderNavigation();
@@ -31,7 +33,7 @@ export class NavigationContainerComponent {
     const cf = this.cfr.resolveComponentFactory(NavigationComponent);
     this.navigation.clear();
     const nav = this.navigation.createComponent(cf);
-    const data = FromStore.getUserInfo;
+    const data = Classes.getUserInfo;
     nav.instance.userName = "Erick";
   }
 

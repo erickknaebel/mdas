@@ -1,7 +1,11 @@
-import * as FromLogin from '../actions/login.action';
-import { UserState } from '../../../../app/shared/models/user.models';
+import * as FromLogin from '../actions/logout.action';
+import { UserData } from '../../shared/models/user.models';
 
-
+export interface UserState {
+    user: UserData;
+    loaded: boolean;
+    loading: boolean;
+}
 
 export const initialState: UserState = {
     user: {
@@ -21,25 +25,25 @@ export const initialState: UserState = {
 
 export function reducer(
     user = initialState,
-    action: FromLogin.LoginAction
+    action: FromLogin.LogoutAction
 ): UserState {
 
     switch (action.type) {
-        case FromLogin.APP_LOGIN: {
+        case FromLogin.APP_LOGOUT: {
             return {
                 ...user,
                 loading: true,
                 loaded: false
             };
         }
-        case FromLogin.APP_LOGIN_SUCCESS: {
+        case FromLogin.APP_LOGOUT_SUCCESS: {
             return {
                 user: action.payload,
                 loading: false,
                 loaded: true
             };
         }
-        case FromLogin.APP_LOGIN_FAIL: {
+        case FromLogin.APP_LOGOUT_FAIL: {
             return {
                 user: action.payload,
                 loading: false,

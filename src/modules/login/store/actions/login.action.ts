@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { UserData } from '../../models/dashboard';
+import { UserData } from '../../../../app/shared/models/user.models';
 
 // export const APP_REFRESH = '[APP] Refresh Application';
 export const APP_LOGIN = '[App] Login In';

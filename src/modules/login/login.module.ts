@@ -7,7 +7,8 @@ import * as FromLoginContainers from './containers';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers, effects } from './store';
+import { effects } from './store';
+import { reducers } from '../../app/shared/classes/authentication.state';
 
 
 import { AuthorizationService } from './../../app/services/authorization.service';

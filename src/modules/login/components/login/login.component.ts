@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Credentials } from '../../models/dashboard';
+import { Credentials } from '../../../../app/shared/models/user.models';
 import { environment } from '../../../../environments/environment';
 
 @Component({
