@@ -1,9 +1,9 @@
 import { Action } from '@ngrx/store';
 import { UserData } from '../../shared/models/user.models';
 
-export const APP_LOGOUT = '[App] Logout In';
-export const APP_LOGOUT_SUCCESS = '[App] Logout In Success';
-export const APP_LOGOUT_FAIL = '[App] Logout In Fail';
+export const APP_LOGOUT = '[App] Logout';
+export const APP_LOGOUT_SUCCESS = '[App] Logout Success';
+export const APP_LOGOUT_FAIL = '[App] Logout Fail';
 
 export class Logout implements Action {
     readonly type = APP_LOGOUT;

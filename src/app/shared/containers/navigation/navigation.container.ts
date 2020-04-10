@@ -1,7 +1,6 @@
 import { Component,ComponentFactoryResolver, ViewChild, ViewContainerRef, Input} from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import * as FromStore from '../../../../modules/login/store';
 import { NavigationComponent } from '../../components/navigation/navigation.component';
 import * as AuthenticationStatus from '../../classes/authentication.state';
 import * as Classes from '../../classes/authentication.state';
