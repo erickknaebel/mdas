@@ -1,6 +1,6 @@
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
 // import * as FromLogin from './login.reducer';
-import * as FromLogin from '../../../modules/login/store/reducers/login.reducer';
+import * as FromLogout from '../../store/reducers/logout.reducer';
 import * as FromUserModels from '../models/user.models';
 
 
@@ -9,7 +9,7 @@ export interface AuthenticationState {
 }
 
 export const reducers: ActionReducerMap<AuthenticationState> = {
-    state: FromLogin.reducer
+    state: FromLogout.reducer
 }
 
 export const getAuthenticationState =
@@ -20,6 +20,6 @@ export const getLoginState = createSelector(
     (state: AuthenticationState) => state.state
 );
 
-export const getUserInfo = createSelector(getLoginState, FromLogin.getUserInfo);
-export const getUserLoaded = createSelector(getLoginState, FromLogin.getUserLoaded);
-export const getUserLoading = createSelector(getLoginState, FromLogin.getUserLoading);
+export const getUserInfo = createSelector(getLoginState, FromLogout.getUserInfo);
+export const getUserLoaded = createSelector(getLoginState, FromLogout.getUserLoaded);
+export const getUserLoading = createSelector(getLoginState, FromLogout.getUserLoading);

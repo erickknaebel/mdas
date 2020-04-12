@@ -1,7 +1,6 @@
 import { Action } from '@ngrx/store';
-import { UserData } from '../../../../app/shared/models/user.models';
+import { UserData } from '../../shared/models/user.models';
 
-// export const APP_REFRESH = '[APP] Refresh Application';
 export const APP_LOGIN = '[App] Login In';
 export const APP_LOGIN_SUCCESS = '[App] Login In Success';
 export const APP_LOGIN_FAIL = '[App] Login In Fail';
@@ -20,8 +19,4 @@ export class LoginFail implements Action {
     constructor(public payload: any) {}
 }
 
-// export class Refresh implements Action {
-//     readonly type = APP_REFRESH;
-// }
-
-export type LoginAction = Login | LoginSuccess | LoginFail //| Refresh;
+export type LoginAction = Login | LoginSuccess | LoginFail;

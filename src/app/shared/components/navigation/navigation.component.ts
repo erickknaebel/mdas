@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import * as AuthenticationStatue from '../../classes/authentication.state'
+import * as AuthenticationStatus from '../../classes/authentication.state'
 import * as FromLogout from '../../../store/actions/logout.action';
 
 
@@ -15,7 +15,7 @@ export class NavigationComponent {
 
   @Input()userName = 'original';
 
-  constructor(private router: Router, private store: Store<AuthenticationStatue.AuthenticationState>) {
+  constructor(private router: Router, private store: Store<AuthenticationStatus.AuthenticationState>) {
   }
 
   navigateTo(path: string) {

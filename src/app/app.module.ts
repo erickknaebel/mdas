@@ -11,7 +11,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 
 import { reducers, CustomSerializer } from './store';
-import { effects } from 'src/modules/login/store';
+import { effects } from './store/effects';
 
 /** Firebase for Angular */
 import { AngularFireModule } from '@angular/fire';
@@ -30,20 +30,22 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule, ROUTES } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginModule } from './../modules/login/login.module';
 import { NavigationComponent } from './shared/components/navigation/navigation.component';
-import { NavigationContainerComponent } from './shared/containers/navigation/navigation.container';
 import { RouterModule } from '@angular/router';
 import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
+
+import * as FromSharedComponents from './shared/components';
+import * as FromSharedContainers from './shared/containers';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
-    NavigationContainerComponent
+    FromSharedComponents.SharedComponents,
+    FromSharedContainers.SharedContainers
   ],
   imports: [
     AngularFireAuthModule,
@@ -55,7 +57,6 @@ import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router
     EffectsModule.forRoot(effects),
     FormsModule,
     HttpClientModule,
-    LoginModule,
     MatSelectModule,
     MatInputModule,
     MatCheckboxModule,
@@ -70,6 +71,7 @@ import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router
     MatTableModule,
     MatIconModule,
     StoreRouterConnectingModule.forRoot(),
+    ReactiveFormsModule,
     RouterModule.forRoot(ROUTES),
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),

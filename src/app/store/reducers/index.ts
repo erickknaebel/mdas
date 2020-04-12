@@ -1,5 +1,6 @@
 import { ActionReducerMap, createFeatureSelector } from '@ngrx/store';
 import * as FromRouter from '@ngrx/router-store';
+import * as FromLogout from '../reducers/logout.reducer';
 
 import { Params, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 

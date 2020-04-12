@@ -1,5 +1,5 @@
-import { LoginEffects } from './login.effects';
+// import { LoginEffects } from '../../../../app/store/effects/login.effects';
 
-export const effects: any[] = [LoginEffects];
+// export const effects: any[] = [LoginEffects];
 
-export * from './login.effects';
+// export * from '../../../../app/store/effects/login.effects';

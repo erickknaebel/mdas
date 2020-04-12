@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { switchMap, map } from 'rxjs/operators';
 
 import * as LoginActions from '../actions/login.action';
-import { AuthorizationService } from './../../../../app/services/authorization.service';
+import { AuthorizationService } from '../../services/authorization.service';
 
 @Injectable()
 export class LoginEffects {

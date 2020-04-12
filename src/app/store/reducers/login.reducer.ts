@@ -1,5 +1,5 @@
 import * as FromLogin from '../actions/login.action';
-import { UserState } from '../../../../app/shared/models/user.models';
+import { UserState } from '../../shared/models/user.models';
 
 
 

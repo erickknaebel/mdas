@@ -8,9 +8,6 @@ import { Router } from '@angular/router';
 })
 export class AuthorizationService {
 
-  // authenticationData: BehaviorSubject<any> = new BehaviorSubject(null);
-  // isAuthenticated$ = this.authenticationData.asObservable();
-
   constructor(private firebaseAuth: AngularFireAuth, private router: Router) { }
 
   userSession(): Observable<any> {
@@ -21,8 +18,6 @@ export class AuthorizationService {
     return new Observable(observer => {
       this.firebaseAuth.auth.signInWithEmailAndPassword(email, password)
         .then(res => {
-          // console.log(res)
-          // this.authenticationData.next(res);
           observer.next(res);
           this.router.navigate(['dashboard']);
         }, error => observer.next(error));
@@ -37,7 +32,13 @@ export class AuthorizationService {
     })
   }
 
-  logout() {
-    console.log('logout...')
+  logout(): Observable<any> {
+    return new Observable(observer => {
+      this.firebaseAuth.auth.signOut()
+        .then(res => {
+          observer.next(res);
+          this.router.navigate(['login']);
+        }, error => observer.next(error));
+    });
   }
 }
